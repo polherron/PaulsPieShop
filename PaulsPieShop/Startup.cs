@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PaulsPieShop.Models;
 
 namespace PaulsPieShop
 {
@@ -30,6 +31,8 @@ namespace PaulsPieShop
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            //register our own services 
+            services.AddTransient<IPieRepository, PieService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
